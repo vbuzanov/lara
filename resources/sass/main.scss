@@ -1,0 +1,15 @@
+$disp: flex;
+
+img{
+    max-width: 100%;
+}
+.news{
+    display: $disp;
+    flex-wrap: wrap;
+    article{
+        display: $disp;
+        flex-direction: column;
+        flex-basis: 19%;
+        margin: 0.5% ;
+    }
+}
