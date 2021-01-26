@@ -52,7 +52,7 @@ class MainController extends Controller
 
     public function reviews()
     {
-        $reviews = Review::paginate(5);
+        $reviews = Review::orderBy('created_at', 'DESC')->paginate(5);
         return view( 'main.reviews', compact('reviews') );
     }
 

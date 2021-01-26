@@ -10008,6 +10008,10 @@ img {
   max-width: 100%;
 }
 
+button {
+  margin-bottom: 1vh;
+}
+
 .news {
   display: flex;
   flex-wrap: wrap;

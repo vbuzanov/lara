@@ -3,6 +3,9 @@ $disp: flex;
 img{
     max-width: 100%;
 }
+button{
+    margin-bottom: 1vh;
+}
 .news{
     display: $disp;
     flex-wrap: wrap;
