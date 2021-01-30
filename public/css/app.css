@@ -10004,26 +10004,3 @@ h3 {
     border-color: #dee2e6;
   }
 }
-img {
-  max-width: 100%;
-}
-
-button {
-  margin-bottom: 1vh;
-}
-
-.news {
-  display: flex;
-  flex-wrap: wrap;
-}
-.news article {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 19%;
-  margin: 0.5%;
-}
-
-footer {
-  background: #333;
-  padding: 20px;
-}
