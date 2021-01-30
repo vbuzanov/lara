@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\News;
+use App\Models\Product;
 use App\Models\Review;
 
 class MainController extends Controller
@@ -13,11 +14,12 @@ class MainController extends Controller
     {
         $title = 'Welcome';
         $subtitle = '<em>to store</em>';
-        $products = ['Product1', 'Product2'];
-        $categories = Category::all();
+        $products = Product::with('category')->get();
+        // dd($products[0]);
+        // $categories = Category::all();
         //dump($products);
         //dd($categories);
-        return view( 'main.index', compact('title', 'products', 'subtitle', 'categories') );
+        return view( 'main.index', compact('title', 'products', 'subtitle') );
     }
 
     public function contacts()
