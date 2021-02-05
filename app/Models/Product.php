@@ -24,6 +24,11 @@ class Product extends Model
         //модель, название столбца с внешним ключом, название столбца текущей модели, название столбца связанной модели
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
 }
 
 

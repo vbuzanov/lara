@@ -67,13 +67,18 @@ class MainController extends Controller
 
         $review = new Review();
         $review->name = $request->name;
+        $review->product_id = $request->product_id;
         $review->review = $request->review;
         $review->save();
 
         return back()->with('success', 'Thanks for your review!');
     }
 
-
+    public function newsnext($slug)
+    {
+        $newsnext = News::where('slug', $slug)->firstOrFail();
+        return view('main.newsnext', compact('newsnext'));
+    }
 }
 
 

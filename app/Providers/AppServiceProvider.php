@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Product;
+use App\Models\Review;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -28,5 +30,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         View::share('shareCategories', Category::withCount('products')->having('products_count', '>', 0)->get());
+        View::share('shareProducts', Product::withCount('reviews')->get());
     }
 }

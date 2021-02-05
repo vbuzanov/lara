@@ -37,6 +37,8 @@ Route::post('/reviews', [MainController::class, 'getReviews']);
 Route::get('/news', [MainController::class, 'news']);
 
 Route::get('/category/{slug}', [StoreController::class, 'category']);
+Route::get('/product/{slug}', [StoreController::class, 'product']);
+Route::get('/newsnext/{slug}', [MainController::class, 'newsnext']);
 Auth::routes();
 
 

@@ -9,6 +9,7 @@
             <img src="{{$new1->img}}" alt="{{$new1->title}}">
             <p>{{$new1->title}}</p>
             <p>{{$new1->short_content}}</p>
+            <a href="/newsnext/{{$new1->slug}}">Read next</a>
         </article>
 
     @endforeach
