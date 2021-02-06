@@ -3,5 +3,6 @@
         <img src="{{$product->img}}" alt="{{$product->name}}">
         <p>{{$product->name}}</p>
         <p>{{$product->price}} UAH</p>
+        <a href="#" data-toggle="tooltip" rel="tooltip" data-placement="top" title="{{$product->reviews_count}}">Review</a>
     </div>
 </div>

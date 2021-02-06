@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\ProductScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,6 +30,10 @@ class Product extends Model
         return $this->hasMany(Review::class);
     }
 
+    protected static function booted()
+    {
+        static::addGlobalScope(new ProductScope);
+    }
 }
 
 

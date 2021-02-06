@@ -4,7 +4,7 @@
     <h1>{{$title}} {!! $subtitle !!}</h1>
     
 
-    @foreach ($shareProducts as $product)
+    @foreach ($products as $product)
         <div class="d-inline-flex p-2 bd-highlight w-25 p-3 border shadow-sm p-3 mb-5 bg-light rounded">
            
             <div class="">

@@ -30,6 +30,5 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         View::share('shareCategories', Category::withCount('products')->having('products_count', '>', 0)->get());
-        View::share('shareProducts', Product::withCount('reviews')->get());
     }
 }
