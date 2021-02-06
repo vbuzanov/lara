@@ -14,7 +14,7 @@ class MainController extends Controller
     {
         $title = 'Welcome';
         $subtitle = '<em>to store</em>';
-        $products = Product::with('category')->get();
+        $products = Product::with('category')->latest()->get();
         // dd($products[0]);
         // $categories = Category::all();
         //dump($products);

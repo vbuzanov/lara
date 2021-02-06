@@ -32,7 +32,7 @@ Route::get('/contacts', [MainController::class, 'contacts']);
 
 Route::post('/contacts', [MainController::class, 'getContacts']);
 Route::get('/sale', [StoreController::class, 'sale']);
-Route::get('/reviews', [MainController::class, 'reviews']);
+Route::get('/reviews', [MainController::class, 'reviews'])->name('review');
 Route::post('/reviews', [MainController::class, 'getReviews']);
 Route::get('/news', [MainController::class, 'news']);
 
@@ -47,3 +47,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function(){
     Route::resource('/category', CategoryController::class);
 });
 
+
+
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});

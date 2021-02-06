@@ -34,6 +34,16 @@ class Product extends Model
     {
         static::addGlobalScope(new ProductScope);
     }
+    
+    public function scopeRecommended($query)
+    {
+        $query->where('recommended', 1);
+    }
+
+    public function scopeLatest($query)
+    {
+        $query->orderByDesc('created_at');
+    }
 }
 
 
