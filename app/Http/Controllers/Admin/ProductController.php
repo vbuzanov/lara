@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //admin/category   GET
-        $categories = Category::orderByDesc('created_at')->get();
-        return view('admin.category.index', compact('categories'));
+        $products = Product::orderByDesc('created_at')->get();
+        return view('admin.product.index', compact('products'));
     }
 
     /**
@@ -27,8 +27,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //admin/category/create   GET
-        return view('admin.category.create');
+        $categories = Category::all()->pluck('name', 'id');
+        return view('admin.product.create', compact('categories'));
     }
 
     /**
@@ -39,28 +39,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //admin/category   POST
-        // $category = new Category();
-        // $category->name = $request->name;
-        // $category->slug = $request->slug;
-        // $category->description = $request->description;
-        // $category->img = $request->img;
-        // $category->save();
-        
-        // $fname = $request->file('imgUpload');
-        // if($fname != null){
-        //     $category->img = $fname->store('uploads');
-        // }
-               
         $validated = $request->validate([
             'name' => 'required|max:255',
-            'slug' => 'required|unique:categories|max:255',
-            // 'imgUpload' => 'image',
+            'slug' => 'required|unique:products|max:255',
+            'price' => 'required|numeric',
             'img' => 'max:255',
         ]);
 
-        Category::create( $request->all() );
-        return redirect('/admin/category')->with('success', 'Thank! Category added!');
+      
+        Product::create( $request->all() );
+        return redirect('/admin/product')->with('success', 'Thank! Product added!');
     }
 
     /**
@@ -71,7 +59,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //admin/category/{category}   GET
+        //
     }
 
     /**
@@ -82,9 +70,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //admin/category/{category}/edit   GET
-        $category = Category::findOrFail($id);
-        return view('admin.category.edit', compact('category'));
+        $product = Product::findOrFail($id);
+        $categories = Category::all()->pluck('name', 'id');
+        return view('admin.product.edit', compact('product', 'categories'));
     }
 
     /**
@@ -96,17 +84,18 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //admin/category/{category}   PUT
+
         $validated = $request->validate([
             'name' => 'required|max:255',
-            'slug' => 'required|unique:categories,slug,'.$id.'|max:255',
+            'slug' => 'required|unique:products,slug,'.$id.'|max:255',
+            'price' => 'required|numeric',
             'img' => 'max:255',
         ]);
 
-        $category = Category::findOrFail($id);
-
-        $category->update( $request->all() );
-        return redirect('/admin/category')->with('success', 'Thank! Category updated!');
+        $product = Product::findOrFail($id);
+      
+        $product->update( $request->all() );
+        return redirect('/admin/product')->with('success', 'Thank! Product updated!');
     }
 
     /**
@@ -117,8 +106,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //admin/category/{category}   DELETE
-        Category::findOrFail($id)->delete();
-        return redirect('/admin/category')->with('success', 'Thank! Category deleted!');
+        Product::findOrFail($id)->delete();
+        return redirect('/admin/product')->with('success', 'Thank! Product deleted!');
     }
 }
