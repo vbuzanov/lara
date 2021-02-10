@@ -31,7 +31,7 @@
                     <td>{{$item->name}}</td>
                     <td>{{$item->category->name}}</td>
                     <td>{{$item->price}}</td>
-                    <td><i class="fas fa-check {{$item->recommended ? 'text-primary' : 'text-secondary'}}">{{$item->recommended}}</i></td>
+                    <td><i class="fas fa-check {{$item->recommended ? 'text-primary' : 'text-secondary'}}"></i></td>
                     <td>
                         <a href="/admin/product/{{$item->id}}/edit" class="btn btn-warning">Edit</a>
                         {!! Form::open(['url' => '/admin/product/'.$item->id, 'method' => 'DELETE']) !!}
