@@ -29,7 +29,7 @@
                     <td>{{$loop->iteration}}</td>
                     <td><img src="{{asset($item->img)}}" alt="" style="width: 70px"></td>
                     <td>{{$item->name}}</td>
-                    <td>{{$item->category->name}}</td>
+                    <td>{{$item->category ? $item->category->name : ''}}</td>
                     <td>{{$item->price}}</td>
                     <td><i class="fas fa-check {{$item->recommended ? 'text-primary' : 'text-secondary'}}"></i></td>
                     <td>

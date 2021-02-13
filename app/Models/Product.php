@@ -46,6 +46,12 @@ class Product extends Model
     {
         $query->orderByDesc('created_at');
     }
+
+    // public function setNameAttribute($value)
+    // {
+    //     dd($this->attributes['recommended']);
+    //     $this->attributes['recommended'] = $this->attributes['recommended'] ? 1 : 0;
+    // }
 }
 
 

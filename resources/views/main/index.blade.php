@@ -10,7 +10,7 @@
             <div class="">
                 <img src="{{$product->img}}" alt="{{$product->name}}">
                 <p><a href="/product/{{$product->slug}}">{{$product->name}}</a></p>
-                <h4>Category: <a href="/category/{{$product->category->slug}}">{{$product->category->name}}</a></h4>
+                <h4>Category: <a href="/category/{{$product->category ? $product->category->slug : 'null'}}">{{$product->category ? $product->category->name : 'null'}}</a></h4>
                 <p>{{$product->price}} UAH</p>
      
                 <a href="#" data-toggle="tooltip" rel="tooltip" data-placement="top" title="{{$product->reviews_count}}">Review</a>

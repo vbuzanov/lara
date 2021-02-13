@@ -29,9 +29,9 @@ class StoreController extends Controller
 
     }
 
-    public function product($slug)
+    public function product(Product $product)
     {
-        $product = Product::where('slug', $slug)->firstOrFail();
+        // $product = Product::where('slug', $slug)->firstOrFail();
         $reviews = Review::where('product_id', $product->id)->orderBy('created_at', 'DESC')->paginate(12);
         
         return view('store.product', compact('product', 'reviews'));

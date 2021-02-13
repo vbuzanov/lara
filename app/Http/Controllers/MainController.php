@@ -5,13 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\News;
+use App\Models\Permission;
 use App\Models\Product;
 use App\Models\Review;
+use App\Models\Role;
+use App\Models\User;
 
 class MainController extends Controller
 {
     public function index()
     {
+        // dd( User::find(41)->hasRole('manager') );
+        //dd( Permission::find(1)->roles );
+
         $title = 'Welcome';
         $subtitle = '<em>to store</em>';
         $products = Product::with('category')->latest()->get();
