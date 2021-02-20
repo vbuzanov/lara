@@ -3,7 +3,9 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\NewsController;
@@ -44,7 +46,12 @@ Route::get('/newsnext/{slug}', [MainController::class, 'newsnext']);
 
 
 Route::post('/cart/add', [CartController::class, 'add']);
+Route::post('/cart/clear', [CartController::class, 'clear']);
+Route::post('/cart/remove/{id}', [CartController::class, 'remove']);
+Route::post('/cart/change-qty', [CartController::class, 'change']);
 
+Route::get('/checkout', [CheckoutController::class, 'checkout']);
+Route::post('/checkout', [CheckoutController::class, 'checkoutSave']);
 
 
 
@@ -55,6 +62,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function(){
     Route::get('/', [AdminController::class, 'index']);
     Route::resource('/category', CategoryController::class);
     Route::resource('/product', ProductController::class);
+    Route::resource('/slider', SliderController::class);
 });
 
 

@@ -15,6 +15,21 @@
     </form>
 
 
+    <h3>Recommended Products:</h3>
+    @forelse ($recommended as $item)
+    <div class="d-inline-flex p-2 bd-highlight w-25 p-3 border shadow-sm p-3 mb-5 bg-light rounded">
+        <div class="">
+            <img src="{{$item->img}}" alt="{{$item->name}}">
+            <p>{{$item->name}}</p>
+            <p>{{$item->price}} UAH</p>
+        </div>
+    </div>
+    @empty
+    <p>No recommended products</p>    
+    @endforelse
+
+
+
     <h3>Add a review</h3>
     @include('store.parts._review')
 

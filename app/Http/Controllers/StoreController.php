@@ -33,8 +33,9 @@ class StoreController extends Controller
     {
         // $product = Product::where('slug', $slug)->firstOrFail();
         $reviews = Review::where('product_id', $product->id)->orderBy('created_at', 'DESC')->paginate(12);
-        
-        return view('store.product', compact('product', 'reviews'));
+        $recommended = $product->recommendations;
+        // dd($recommended);
+        return view('store.product', compact('product', 'reviews','recommended'));
     }
 
 }

@@ -2,25 +2,17 @@
 
 namespace App\Models;
 
-use App\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Category extends Model
+class Slider extends Model
 {
-    use HasFactory, Sluggable;
-
-    protected $fillable = ['name', 'description', 'img', 'slug'];
-
-    public function products()
-    {
-        return $this->hasMany(Product::class);
-    }
+    use HasFactory;
     
+    protected $fillable = ['name',  'description', 'img', 'button_text', 'button_url'];
+
     public function getImgAttribute($value)
     {
         return $value ? $value : '/images/no-image.png';
     }
-
 }

@@ -9,6 +9,7 @@ use App\Models\Permission;
 use App\Models\Product;
 use App\Models\Review;
 use App\Models\Role;
+use App\Models\Slider;
 use App\Models\User;
 
 class MainController extends Controller
@@ -21,11 +22,12 @@ class MainController extends Controller
         $title = 'Welcome';
         $subtitle = '<em>to store</em>';
         $products = Product::with('category')->latest()->get();
+        $sliders = Slider::all();
         // dd($products[0]);
         // $categories = Category::all();
         //dump($products);
         //dd($categories);
-        return view( 'main.index', compact('title', 'products', 'subtitle') );
+        return view( 'main.index', compact('title', 'products', 'subtitle','sliders') );
     }
 
     public function contacts()

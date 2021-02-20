@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\Scopes\ProductScope;
+use App\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use phpDocumentor\Reflection\Types\Self_;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     protected $fillable = ['name', 'description', 'img', 'slug', 'category_id', 'price', 'recommended'];
 
@@ -45,6 +47,11 @@ class Product extends Model
     public function scopeLatest($query)
     {
         $query->orderByDesc('created_at');
+    }
+
+    public function recommendations()
+    {
+        return $this->belongsToMany(Self::class, 'recommendations', 'product_id', 'recommended_id');
     }
 
     // public function setNameAttribute($value)

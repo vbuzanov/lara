@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
   <link rel="stylesheet" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -188,7 +189,9 @@
             <li class="pt-2 user-panel pb-3">
               <a href="/admin/product"><span>Products</span></a>
             </li>
-
+            <li class="pt-2 user-panel pb-3">
+              <a href="/admin/slider"><span>Slider</span></a>
+            </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -262,6 +265,7 @@
 
 
 <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 @yield('js')
 
 </body>

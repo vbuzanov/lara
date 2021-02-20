@@ -1,10 +1,10 @@
 @extends('admin.layouts.index')
 
 @section('content')
-    <h1>Add Product</h1>
-    {!! Form::open(['url' => '/admin/product', 'files' => true]) !!}
+    <h1>Add Slider</h1>
+    {!! Form::open(['url' => '/admin/slider', 'files' => true]) !!}
     
-    @include('admin.product._form')
+    @include('admin.slider._form')
 
     {!! Form::close() !!}
   
@@ -25,6 +25,5 @@
         // CKEDITOR.replace('description', options);
 
         $('#lfm').filemanager('image');
-        $('.recommended_products').select2();
     </script>
 @endsection

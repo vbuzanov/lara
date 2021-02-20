@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Product;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class SliderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderByDesc('created_at')->get();
-        return view('admin.product.index', compact('products'));
+        $sliders = Slider::all();
+        return view('admin.slider.index', compact('sliders'));
     }
 
     /**
@@ -27,9 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::all()->pluck('name', 'id');
-        $products = Product::all()->pluck('name', 'id');
-        return view('admin.product.create', compact('categories', 'products'));
+        return view('admin.slider.create');
     }
 
     /**
@@ -42,15 +39,13 @@ class ProductController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|max:255',
-            // 'slug' => 'required|unique:products|max:255',
-            'price' => 'required|numeric',
+            'description' => 'required',
+            'button_text' => 'required|max:255',
+            'button_url' => 'required|max:255',
             'img' => 'max:255',
-        ]);
-
-      
-        $product = Product::create( $request->all() );
-        $product->recommendations()->sync($request->recommendations);
-        return redirect('/admin/product')->with('success', 'Thank! Product added!');
+            ]);
+        Slider::create($request->all());
+        return redirect('/admin/slider')->with('success', 'Thank! Slider created!');
     }
 
     /**
@@ -72,10 +67,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::findOrFail($id);
-        $categories = Category::all()->pluck('name', 'id');
-        $products = Product::all()->pluck('name', 'id');
-        return view('admin.product.edit', compact('product', 'categories', 'products'));
+        $slider = Slider::findOrFail($id);
+        return view('admin.slider.edit' , compact('slider'));
     }
 
     /**
@@ -87,21 +80,17 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $validated = $request->validate([
             'name' => 'required|max:255',
-            'slug' => 'required|unique:products,slug,'.$id.'|max:255',
-            'price' => 'required|numeric',
+            'description' => 'required',
+            'button_text' => 'required|max:255',
+            'button_url' => 'required|max:255',
             'img' => 'max:255',
-        ]);
+            ]);
+        $slider = Slider::findOrFail($id);
+        $slider->update( $request->all());
 
-        $product = Product::findOrFail($id);
-      
-        $product->update( $request->all() );
-
-        $product->recommendations()->sync($request->recommendations);
-
-        return redirect('/admin/product')->with('success', 'Thank! Product updated!');
+        return redirect('/admin/slider')->with('success', 'Thank! Slider updated!');
     }
 
     /**
@@ -112,7 +101,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        Product::findOrFail($id)->delete();
-        return redirect('/admin/product')->with('success', 'Thank! Product deleted!');
+        Slider::findOrFail($id)->delete();
+        return redirect('/admin/slider')->with('success', 'Thank! Slider deleted!');
     }
 }

@@ -54,4 +54,9 @@
     @endisset
 </div>
 
+<div class="form-group">
+    {!! Form::label('recommendations[]', 'Recommended Products:') !!}
+    {!! Form::select('recommendations[]', $products, null, ['multiple'=>true, 'class'=> 'form-control recommended_products']) !!}
+</div>
+
 <button class="btn btn-primary">Save</button>

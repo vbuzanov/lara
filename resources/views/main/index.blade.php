@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>{{$title}} {!! $subtitle !!}</h1>
-    
+    @include('main._slider')
 
     @foreach ($products as $product)
         <div class="d-inline-flex p-2 bd-highlight w-25 p-3 border shadow-sm p-3 mb-5 bg-light rounded">
@@ -20,6 +20,9 @@
             </div>
         </div>
     @endforeach
+
+    
+    
 @endsection
 
 
