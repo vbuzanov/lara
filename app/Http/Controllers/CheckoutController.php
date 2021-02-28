@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\Cart;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\OrderItems;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CheckoutController extends Controller
 {
@@ -13,6 +18,37 @@ class CheckoutController extends Controller
 
     public function checkoutSave(Request $request)
     {
-        // return view('store.checkout');
+       
+        $validation = $request->validate([
+            'name' => 'required|min:3|max:25',
+            'phone' => 'required',
+            'address' => 'required',
+        ]);
+        // dd($request->name);
+        $order = new Order();
+        $order->totalSum = Session::get('totalSum');
+        $order->name = $request->name;
+        $order->phone = $request->phone;
+        $order->address = $request->address;
+        $order->status_id = 1;
+        $order->save();
+
+
+
+        foreach(Session::get('cart') as $id => $product){
+            $orderItem = new OrderItem();
+            $orderItem->order_id = $order->id;
+
+            $orderItem->product_name = $product['name'];
+            $orderItem->product_price = $product['price'];
+            $orderItem->product_qty = $product['qty'];
+            $orderItem->product_img = $product['img'];
+
+            $orderItem->save();
+        }
+        Cart::clear();
+
+
+        return back()->with('success', 'Спасибо за заказ');
     }
 }

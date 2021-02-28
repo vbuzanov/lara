@@ -192,6 +192,9 @@
             <li class="pt-2 user-panel pb-3">
               <a href="/admin/slider"><span>Slider</span></a>
             </li>
+            <li class="pt-2 user-panel pb-3">
+              <a href="/admin/order"><span>Order</span></a>
+            </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\CartController;
@@ -63,6 +64,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function(){
     Route::resource('/category', CategoryController::class);
     Route::resource('/product', ProductController::class);
     Route::resource('/slider', SliderController::class);
+    Route::resource('/order', OrderController::class);
 });
 
 

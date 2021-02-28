@@ -5,6 +5,16 @@
     <div class="modal-body">
         @include('store.parts._cart')
     </div>
+    @if ($errors->any())
+    <div class="alert alet-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+        
+    @endif
     
     {!! Form::open(['url'=>'/checkout']) !!}
     <div class="form-group">
@@ -16,8 +26,8 @@
         {!! Form::text('phone', null, ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
-        {!! Form::label('adress') !!}
-        {!! Form::text('adress', null, ['class'=>'form-control']) !!}
+        {!! Form::label('address') !!}
+        {!! Form::text('address', null, ['class'=>'form-control']) !!}
     </div>
 
     {!! Form::submit('checkout', ['class'=>'btn btn-primary']) !!}

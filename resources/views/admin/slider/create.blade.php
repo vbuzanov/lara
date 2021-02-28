@@ -12,7 +12,7 @@
 
 
 @section('js')
-{{-- <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script> --}}
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 
     <script>
@@ -22,7 +22,7 @@
             filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
             filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
   };
-        // CKEDITOR.replace('description', options);
+        CKEDITOR.replace('description', options);
 
         $('#lfm').filemanager('image');
     </script>

@@ -1,10 +1,10 @@
 @extends('admin.layouts.index')
 
 @section('content')
-    <h1>Edit Slider</h1>
-    {!! Form::model($slider, ['url' => '/admin/slider/'.$slider->id, 'files' => true, 'method' => 'put']) !!}
+    <h1>Edit Order</h1>
+    {!! Form::model($order, ['url' => '/admin/order/'.$order->id, 'files' => true, 'method' => 'put']) !!}
     
-    @include('admin.slider._form')
+    @include('admin.order._form')
 
     {!! Form::close() !!}
   
@@ -12,7 +12,7 @@
 
 
 @section('js')
-<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+{{-- <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script> --}}
 <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 
     <script>
@@ -22,8 +22,11 @@
             filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
             filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
   };
-        CKEDITOR.replace('description', options);
+        // CKEDITOR.replace('description', options);
 
         $('#lfm').filemanager('image');
+
+
+        $('.recommended_products').select2();
     </script>
 @endsection

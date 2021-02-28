@@ -26,7 +26,8 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="4" class="text-right">Total:</td>
+                <td>Total:</td>
+                <td colspan="3" class="text-right"></td>
                 <td>{{session('totalSum')}}</td>
             </tr>
         </tfoot>

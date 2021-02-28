@@ -15,27 +15,34 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-                'name' => 'Demo',
-                'email' => 'demo@gmail.com',
-                'password' => Hash::make('demo'),
-        ]);
+        // DB::table('users')->insert([
+        //         'name' => 'Demo',
+        //         'email' => 'demo@gmail.com',
+        //         'password' => Hash::make('demo'),
+        // ]);
 
-        DB::table('roles')->insert([
-            'name' => 'admin',
-            'slug' => 'admin',
-        ]);
+        // DB::table('roles')->insert([
+        //     'name' => 'admin',
+        //     'slug' => 'admin',
+        // ]);
 
-        DB::table('users_roles')->insert([
-            'user_id' => 1,
-            'role_id' => 1,
-        ]);
+        // DB::table('users_roles')->insert([
+        //     'user_id' => 1,
+        //     'role_id' => 1,
+        // ]);
 
-        \App\Models\User::factory(10)->create();
-        \App\Models\Category::factory(10)->create();
-        \App\Models\Product::factory(10)->create();
-        \App\Models\Review::factory(10)->create();
-        \App\Models\News::factory(30)->create();
+        // \App\Models\User::factory(10)->create();
+        // \App\Models\Category::factory(10)->create();
+        // \App\Models\Product::factory(10)->create();
+        // \App\Models\Review::factory(10)->create();
+        // \App\Models\News::factory(30)->create();
+
+        DB::table('statuses')->insert([
+            ['name' => 'В процессе'],
+            ['name' => 'Ожидает оплату'],
+            ['name' => 'Оплачен'],
+            ['name' => 'Завершен'],
+        ]);
 
     }
 }
